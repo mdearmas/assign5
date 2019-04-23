@@ -32,7 +32,7 @@ public:
 
   friend ostream& operator<<(ostream& os, const Faculty& s)
   {
-    os << s.id << "   " << s.name << "   " << s.level << " " << s.department;
+    os << s.id << " / " << s.name << " / " << s.level << " / " << s.department;
     return os;
   }
 
