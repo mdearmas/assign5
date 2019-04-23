@@ -19,6 +19,8 @@ public:
     gpa = g;
   }
 
+  virtual ~Student(){} //nothing new was allocated, so nothing needs to be destroyed
+
   int getAdvisor() { return advisor; }
   string getMajor() { return major; }
   double getGPA() { return gpa; }
@@ -29,7 +31,7 @@ public:
   {
     os << s.id << "   " << s.name << "   " << s.level << " " << s.major;
     os << "   Advisor: " << s.advisor;
-    os << "   GPA: " << s.gpa << endl;
+    os << "   GPA: " << s.gpa;
     return os;
   }
 

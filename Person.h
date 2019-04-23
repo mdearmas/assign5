@@ -21,6 +21,8 @@ public:
     level = l;
   }
 
+  virtual ~Person(){} //virtual destructor to account for child classes
+
   //accessor methods
   int getID() { return id; }
   string getName() { return name; }
