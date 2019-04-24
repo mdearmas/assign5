@@ -120,6 +120,26 @@ public:
     return true;
   }
 
+  T find(int k)
+  {
+    if(!isEmpty() && contains(k))
+    {
+      TreeNode<T>* curr = root;
+      while(k != curr->key)
+      {
+        if(k < curr->key)
+          curr = curr->left;
+        else
+          curr = curr->right;
+      }
+      return curr->data;
+    }
+    else
+    {
+      cout << "Error: Can not find requested value." << endl;
+    }
+  }
+
   TreeNode<T>* getSuccessor(TreeNode<T>* d)
   {
     TreeNode<T> *sp = d; //successor's parent
@@ -247,6 +267,25 @@ public:
     inOrderPrint(n->left);
     cout << n->key << " " << n->data << endl;
     inOrderPrint(n->right);
+  }
+
+  BST* copy()
+  {
+    BST* copy = new BST();
+    recursiveCopy(root, copy);
+    return copy;
+  }
+
+  void recursiveCopy(TreeNode<T>* node, BST* b)
+  {
+    if(node == NULL)
+      return;
+    else
+    {
+      recursiveCopy(node->left, b);
+      b->insertBST(node->key, node->data);
+      recursiveCopy(node->right, b);
+    }
   }
 
   void serialize(TreeNode<T> *root, ofstream& os)

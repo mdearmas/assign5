@@ -5,6 +5,7 @@
 int main(int argc, char **argv)
 {
   BST<char>* b = new BST<char>();
+
   b->insertBST(13, 'm');
   b->insertBST(26, 'z');
   b->insertBST(1, 'a');
@@ -16,8 +17,9 @@ int main(int argc, char **argv)
 
   cout << endl;
 
-  if(b->contains(7))
-    b->deleteBST(7);
-    
-  b->printTree();
+  BST<char>* copy = b->copy();
+
+  cout << b->find(26) << b->find(1) << b->find(16) << endl;
+
+  copy->printTree();
 }
