@@ -313,7 +313,6 @@ public:
     deSerialize(root->right, is);
   }
 
-private:
   TreeNode<T>* root;
 };
 
