@@ -1,21 +1,23 @@
 #include "Student.h"
 #include "Faculty.h"
+#include "GenBST.h"
 
 int main(int argc, char **argv)
 {
-  Student s(2278209, "Makenzie De Armas", "Junior", 14, "Creative Writing", 3.75);
-  Student t(2278209, "Makenzie De Armas", "Junior", 14, "Creative Writing", 3.75);
+  BST<char>* b = new BST<char>();
+  b->insertBST(13, 'm');
+  b->insertBST(26, 'z');
+  b->insertBST(1, 'a');
+  b->insertBST(7, 'g');
+  b->insertBST(16, 'p');
+  b->insertBST(9, 'i');
+  b->insertBST(20, 't');
+  b->printTree();
 
-  if(s == t)
-    cout << s << endl;
+  cout << endl;
 
-  Faculty f(14, "Rene German", "Professor", "Computer Science");
-  cout << f << endl;
-  f.addAdvisee(2278209);
-  f.removeAdvisee(10);
-  f.addAdvisee(23431235);
-  f.removeAdvisee(2278209);
-  f.addAdvisee(1234325);
-  f.addAdvisee(98475322);
-  f.printAdvisees();
+  if(b->contains(7))
+    b->deleteBST(7);
+    
+  b->printTree();
 }
