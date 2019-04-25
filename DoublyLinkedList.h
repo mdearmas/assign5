@@ -346,6 +346,31 @@ public:
       cout << e.getErrorMessage() << endl; //prints the error message to the console
     }
   }
+
+  T* arrayConvert()
+  {
+    try
+    {
+      if(isEmpty()) //if the list is empty, throw an exception
+        throw EmptyListException("No contents found.");
+      else
+      {
+        T* array = new T[size];
+        int index = 0;
+        ListNode<T> *curr = front;
+        while(curr != NULL)
+        {
+          array[index] = curr->data;
+          curr = curr->next;
+        }
+        return array;
+      }
+    }
+    catch(EmptyListException& e)
+    {
+      cout << e.getErrorMessage() << endl; //prints the error message to the console
+    }
+  }
 };
 
 #endif

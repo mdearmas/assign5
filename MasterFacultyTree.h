@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
+#include <vector>
 
 #include "GenBST.h"
 #include "Faculty.h"
@@ -10,14 +12,14 @@
 class MasterFacultyTree {
 public:
   MasterFacultyTree();
-
   ~MasterFacultyTree();
 
-  void save(ofstream& os); //serialize from root
-  void load(ifstream& is); //deserialize from root
-  void serialize(TreeNode<Faculty> *s, ofstream& os); //recursive serialization
-  void deserialize(TreeNode<Faculty> *s, ifstream& is);
-  void setup(); //finds the file (if it exists) and loads the tree into this object
+  void save(); //serialize from root
+  void load(); //deserialize from root
+  void serialize(TreeNode<Faculty> *s, ofstream& f); //recursive serialization
+  void deserialize(ifstream& f);
+
+  void addFaculty();
 
 private:
   BST<Faculty> *tree;

@@ -2,12 +2,18 @@
 #include "Faculty.h"
 #include "GenBST.h"
 #include "MasterStudentTree.h"
+#include "MasterFacultyTree.h"
 
 int main(int argc, char **argv)
 {
-  MasterStudentTree m;
+  /*MasterStudentTree s;
+  s.load();
+  s.addStudent();
+  s.save();*/
+
+  MasterFacultyTree m;
 
   m.load();
-  m.addStudent();
+  m.addFaculty();
   m.save();
 }

@@ -9,26 +9,28 @@ public:
   Faculty():Person() //default constructor
   {
     department = "Unassgined";
-    advisees = new DoublyLinkedList<int>();
+    //advisees = new DoublyLinkedList<int>();
   }
 
   Faculty(int i, string n, string l, string d):Person(i, n, l) //overloaded constructor
   {
     department = d;
-    advisees = new DoublyLinkedList<int>();
+    //advisees = new DoublyLinkedList<int>();
   }
 
   virtual ~Faculty()
   {
-    delete advisees;
+    //delete advisees;
   }
 
   string getDepartment() { return department; }
-  DoublyLinkedList<int>* getAdvisees() { return advisees; }
+  //DoublyLinkedList<int>* getAdvisees() { return advisees; }
 
-  void addAdvisee(int student_id);
+  /*void addAdvisee(int student_id);
   void removeAdvisee(int student_id);
   void printAdvisees();
+  int numberOfAdvisees();
+  int* adviseeArray();*/
 
   friend ostream& operator<<(ostream& os, const Faculty& s)
   {
@@ -38,7 +40,7 @@ public:
 
 protected:
   string department;
-  DoublyLinkedList<int>* advisees;
+  //DoublyLinkedList<int>* advisees;
 
 };
 
