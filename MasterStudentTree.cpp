@@ -10,45 +10,107 @@ MasterStudentTree::~MasterStudentTree()
   delete tree;
 }
 
-void MasterStudentTree::save(ofstream& os)
+void MasterStudentTree::save()
 {
-  serialize(tree->root, os);
+  ofstream fout;
+  fout.open("masterStudent.csv", ios::out);
+  serialize(tree->root, fout);
 }
 
-void MasterStudentTree::load(ifstream& is)
+void MasterStudentTree::load()
 {
-  deserialize(tree->root, is);
+  ifstream fin;
+  fin.open("masterStudent.csv", ios::in);
+  if(fin.is_open())
+  {
+    deserialize(fin);
+  }
 }
 
-void MasterStudentTree::serialize(TreeNode<Student> *s, ofstream& os)
+void MasterStudentTree::serialize(TreeNode<Student> *s, ofstream& f)
 {
   if(s == NULL)
   {
-    //print a NULL marker to file
+    f << "#" << endl;
+    return;
   }
   else
   {
-    //print the node to the file
-    serialize(s->left, os);
-    serialize(s->right, os);
+    Student placeholder = s->data;
+    f << placeholder.getID() << ',' << placeholder.getName() << ',' << placeholder.getLevel() << ',' << placeholder.getMajor() << ',' << placeholder.getGPA() << ',' << placeholder.getAdvisor() << endl;
+    serialize(s->left, f);
+    serialize(s->right, f);
   }
 }
 
-void MasterStudentTree::deserialize(TreeNode<Student> *s, ifstream& is)
+void MasterStudentTree::deserialize(ifstream& f)
 {
   int i;
   string n;
   string l;
-  int a;
   string m;
   double g;
+  int a;
 
-  //if there are no other items in file or a NULL marker is found, return
-  //else read in the info to the corresponding variables
+  vector<string> row;
+  string line, word, temp;
 
-  Student temp(i, n, l, a, m, g); //creates new student with info
+  while(getline(f, line))
+  {
+    if(line != "#")
+    {
+      row.clear();
 
-  tree->insertBST(i, temp); //insert into tree
-  deserialize(s->left, is);
-  deserialize(s->right, is);
+      stringstream str(line);
+
+      while(getline(str, word, ','))
+      {
+        row.push_back(word);
+      }
+
+      i = stoi(row[0]);
+      n = row[1];
+      l = row[2];
+      m = row[3];
+      g = stod(row[4]);
+      a = stoi(row[5]);
+
+      Student new_student(i, n, l, a, m, g);
+      tree->insertBST(i, new_student);
+    }
+  }
+}
+
+void MasterStudentTree::addStudent()
+{
+  int i;
+  string n;
+  string l;
+  string m;
+  double g;
+  int a;
+
+  cout << "Enter the student's ID: ";
+  cin >> i;
+  cin.ignore();
+
+  cout << "Enter the student's name: ";
+  getline(cin, n);
+
+  cout << "Enter the student's grade level: ";
+  getline(cin, l);
+
+  cout << "Enter the student's major: ";
+  getline(cin, m);
+
+  cout << "Enter the student's GPA: ";
+  cin >> g;
+  cin.ignore();
+
+  cout << "Enter the student's advisor: ";
+  cin >> a;
+  cin.ignore();
+
+  Student new_student(i, n, l, a, m, g);
+  tree->insertBST(i, new_student);
 }

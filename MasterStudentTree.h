@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
+#include <vector>
 
 #include "GenBST.h"
 #include "Student.h"
@@ -13,11 +15,12 @@ public:
 
   ~MasterStudentTree();
 
-  void save(ofstream& os); //serialize from root
-  void load(ifstream& is); //deserialize from root
-  void serialize(TreeNode<Student> *s, ofstream& os); //recursive serialization
-  void deserialize(TreeNode<Student> *s, ifstream& is);
-  void setup(); //finds the file (if it exists) and loads the tree into this object
+  void save(); //serialize from root
+  void load(); //deserialize from root
+  void serialize(TreeNode<Student> *s, ofstream& f); //recursive serialization
+  void deserialize(ifstream& f);
+
+  void addStudent();
 
 private:
   BST<Student> *tree;
