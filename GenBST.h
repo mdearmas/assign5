@@ -95,7 +95,6 @@ public:
           }
         }
       }
-      cout << "Insertion completed." << endl;
     }
   }
 

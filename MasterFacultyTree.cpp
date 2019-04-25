@@ -37,14 +37,8 @@ void MasterFacultyTree::serialize(TreeNode<Faculty> *s, ofstream& f)
   else
   {
     Faculty placeholder = s->data;
-    /*int* array = placeholder.adviseeArray();
-    string advisee_string = "";
-    for(int k = 0; k < placeholder.numberOfAdvisees(); ++k)
-    {
-      advisee_string = advisee_string + to_string(array[k]) + '/';
-    }*/
 
-    f << placeholder.getID() << ',' << placeholder.getName() << ',' << placeholder.getLevel() << ',' << placeholder.getDepartment() << endl;
+    f << placeholder.getID() << ',' << placeholder.getName() << ',' << placeholder.getLevel() << ',' << placeholder.getDepartment() << ',' << placeholder.getAdvisees() << endl;
     serialize(s->left, f);
     serialize(s->right, f);
   }
@@ -56,6 +50,7 @@ void MasterFacultyTree::deserialize(ifstream& f)
   string n;
   string l;
   string d;
+  string a;
 
   vector<string> row, advisees;
   string line, word, number, temp;
@@ -77,18 +72,10 @@ void MasterFacultyTree::deserialize(ifstream& f)
       n = row[1];
       l = row[2];
       d = row[3];
+      a = row[4];
 
-      /*stringstream array(row[4]);
-      while(getline(array, number, '/'))
-      {
-        advisees.push_back(number);
-      }*/
+      Faculty new_faculty(i, n, l, d, a);
 
-      Faculty new_faculty(i, n, l, d);
-      /*for(int k = 0; k < advisees.size(); ++k)
-      {
-        new_faculty.addAdvisee(stoi(advisees[k]));
-      }*/
       tree->insertBST(i, new_faculty);
     }
   }
@@ -118,7 +105,7 @@ void MasterFacultyTree::addFaculty()
 
   Faculty new_faculty(i, n, l, d);
 
-  /*cout << "How many advisees does this faculty member have? ";
+  cout << "How many advisees does this faculty member have? ";
   cin >> a;
   cin.ignore();
 
@@ -128,9 +115,8 @@ void MasterFacultyTree::addFaculty()
     cin >> s;
     cin.ignore();
     new_faculty.addAdvisee(s);
-  }*/
-
-  //new_faculty.printAdvisees();
+  }
 
   tree->insertBST(i, new_faculty);
+  cout << "Finished adding faculty." << endl;
 }
