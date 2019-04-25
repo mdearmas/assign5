@@ -12,7 +12,7 @@ void Faculty::removeAdvisee(int student_id)
   string placeholder = "";
   stringstream s(advisee_list);
 
-  while(getline(s, number, '/'))
+  while(getline(s, number, '/')) //converts the string advisee_list into an iterable vector of ints
   {
     advisee_vector.push_back(stoi(number));
   }

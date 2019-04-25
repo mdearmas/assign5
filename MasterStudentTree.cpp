@@ -45,15 +45,12 @@ void MasterStudentTree::serialize(TreeNode<Student> *s, ofstream& f)
 
 void MasterStudentTree::deserialize(ifstream& f)
 {
-  int i;
-  string n;
-  string l;
-  string m;
+  int i, a;
+  string n, l, m;
   double g;
-  int a;
 
   vector<string> row;
-  string line, word, temp;
+  string line, word;
 
   while(getline(f, line))
   {
@@ -83,12 +80,9 @@ void MasterStudentTree::deserialize(ifstream& f)
 
 void MasterStudentTree::addStudent()
 {
-  int i;
-  string n;
-  string l;
-  string m;
+  int i, a;
+  string n, l, m;
   double g;
-  int a;
 
   cout << "Enter the student's ID: ";
   cin >> i;

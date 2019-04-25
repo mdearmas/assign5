@@ -47,10 +47,7 @@ void MasterFacultyTree::serialize(TreeNode<Faculty> *s, ofstream& f)
 void MasterFacultyTree::deserialize(ifstream& f)
 {
   int i;
-  string n;
-  string l;
-  string d;
-  string a;
+  string n, l, d, a;
 
   vector<string> row;
   string line, word;
@@ -83,12 +80,8 @@ void MasterFacultyTree::deserialize(ifstream& f)
 
 void MasterFacultyTree::addFaculty()
 {
-  int i;
-  string n;
-  string l;
-  string d;
-  int a;
-  int s;
+  int i, a, s;
+  string n, l, d;
 
   cout << "Enter the faculty's ID: ";
   cin >> i;
@@ -118,5 +111,4 @@ void MasterFacultyTree::addFaculty()
   }
 
   tree->insertBST(i, new_faculty);
-  cout << "Finished adding faculty." << endl;
 }

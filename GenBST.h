@@ -288,31 +288,6 @@ public:
     }
   }
 
-  void serialize(TreeNode<T> *root, ofstream& os)
-  {
-    if(root == NULL)
-    {
-      //print a NULL marker to file
-    }
-    else
-    {
-      //print the node to the file
-      serialize(root->left, os);
-      serialize(root->right, os);
-    }
-  }
-
-  void deSerialize(TreeNode<T> *root, ifstream& is)
-  {
-    int k;
-    T v;
-    //if there are no more items, then return
-
-    root->insert(k, v);
-    deSerialize(root->left, is);
-    deSerialize(root->right, is);
-  }
-
   TreeNode<T>* root;
 };
 

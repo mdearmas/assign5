@@ -20,7 +20,7 @@ public:
     advisee_list = "";
   }
 
-  Faculty(int i, string n, string l, string d, string a):Person(i, n, l) //overloaded constructor 2
+  Faculty(int i, string n, string l, string d, string a):Person(i, n, l) //overloaded constructor 2, used specifically for deserialization
   {
     department = d;
     advisee_list = a;
@@ -34,7 +34,7 @@ public:
   void addAdvisee(int student_id);
   void removeAdvisee(int student_id);
   void printAdvisees();
-  
+
   friend ostream& operator<<(ostream& os, const Faculty& s)
   {
     os << s.id << " / " << s.name << " / " << s.level << " / " << s.department;
@@ -43,7 +43,7 @@ public:
 
 protected:
   string department;
-  string advisee_list;
+  string advisee_list; //a list of integers collected into a single string divided by the delimiter '/'; makes for easier serialization and deserialization; can be parsed into a vector of ints
 
 };
 
