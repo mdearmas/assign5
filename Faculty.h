@@ -1,6 +1,8 @@
 #ifndef FACULTY_H_
 #define FACULTY_H_
 
+#include <sstream>
+#include <vector>
 #include "Person.h"
 #include "DoublyLinkedList.h"
 
@@ -24,20 +26,15 @@ public:
     advisee_list = a;
   }
 
-  virtual ~Faculty()
-  {
-    //delete advisees;
-  }
+  virtual ~Faculty() {};
 
   string getDepartment() { return department; }
   string getAdvisees() { return advisee_list; }
 
   void addAdvisee(int student_id);
   void removeAdvisee(int student_id);
-  //void printAdvisees();
-  //int numberOfAdvisees();
-  //int* adviseeArray();
-
+  void printAdvisees();
+  
   friend ostream& operator<<(ostream& os, const Faculty& s)
   {
     os << s.id << " / " << s.name << " / " << s.level << " / " << s.department;

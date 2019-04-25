@@ -6,14 +6,9 @@
 
 int main(int argc, char **argv)
 {
-  /*MasterStudentTree s;
-  s.load();
-  s.addStudent();
-  s.save();*/
-
-  MasterFacultyTree m;
-
-  m.load();
-  m.addFaculty();
-  m.save();
+  Faculty f(12, "Scratticus", "Headmaster", "TTRPGS", "34/56/92/");
+  f.addAdvisee(103);
+  f.removeAdvisee(56);
+  cout << f << endl;
+  f.printAdvisees();
 }

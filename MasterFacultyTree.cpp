@@ -52,8 +52,8 @@ void MasterFacultyTree::deserialize(ifstream& f)
   string d;
   string a;
 
-  vector<string> row, advisees;
-  string line, word, number, temp;
+  vector<string> row;
+  string line, word;
 
   while(getline(f, line))
   {
