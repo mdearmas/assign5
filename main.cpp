@@ -27,7 +27,7 @@ int main(int argc, char **argv)
     }
     else if(answer == "ff")
     {
-      //find faculty
+      m.findFaculty();
     }
     else if(answer == "fa")
     {

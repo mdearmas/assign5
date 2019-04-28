@@ -21,6 +21,7 @@ public:
 
   void addFaculty();
   void print();
+  void lookup(int id);
 
 private:
   BST<Faculty> *tree;

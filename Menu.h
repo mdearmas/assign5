@@ -20,7 +20,7 @@ public:
   void displayAllFaculty();
 
   void findStudent();
-  void findFaculty(int id);
+  void findFaculty();
 
   void findAdvisor(int id);
   void findAdvisees(int id);

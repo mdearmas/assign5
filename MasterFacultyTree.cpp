@@ -117,3 +117,16 @@ void MasterFacultyTree::print()
 {
   tree->printTree();
 }
+
+void MasterFacultyTree::lookup(int id)
+{
+  if(tree->contains(id))
+  {
+    Faculty f = tree->find(id);
+    cout << id << " " << f << endl;
+  }
+  else
+  {
+    cout << "Faculty " << id << " does not exist." << endl;
+  }
+}
