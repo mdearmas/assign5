@@ -20,6 +20,7 @@ public:
   void deserialize(ifstream& f);
 
   void addFaculty();
+  void print();
 
 private:
   BST<Faculty> *tree;

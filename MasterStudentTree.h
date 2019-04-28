@@ -21,6 +21,7 @@ public:
   void deserialize(ifstream& f);
 
   void addStudent();
+  void print();
 
 private:
   BST<Student> *tree;

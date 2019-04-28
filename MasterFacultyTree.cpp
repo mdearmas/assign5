@@ -112,3 +112,8 @@ void MasterFacultyTree::addFaculty()
 
   tree->insertBST(i, new_faculty);
 }
+
+void MasterFacultyTree::print()
+{
+  tree->printTree();
+}

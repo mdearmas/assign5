@@ -108,3 +108,8 @@ void MasterStudentTree::addStudent()
   Student new_student(i, n, l, a, m, g);
   tree->insertBST(i, new_student);
 }
+
+void MasterStudentTree::print()
+{
+  tree->printTree();
+}
