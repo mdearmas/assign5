@@ -22,6 +22,7 @@ public:
 
   void addStudent();
   void print();
+  void lookup(int id);
 
 private:
   BST<Student> *tree;

@@ -19,7 +19,7 @@ public:
   void displayAllStudents();
   void displayAllFaculty();
 
-  void findStudent(int id);
+  void findStudent();
   void findFaculty(int id);
 
   void findAdvisor(int id);

@@ -40,6 +40,19 @@ void Menu::displayAllFaculty()
   f_tree.print();
 }
 
+void Menu::findStudent()
+{
+  int id;
+  cout << "Enter the student's id: ";
+  cin >> id;
+  if(cin.fail())
+    cout << "Not a valid ID number." << endl;
+  else
+  {
+    s_tree.lookup(id);
+  }
+}
+
 void Menu::addStudent()
 {
   s_tree.addStudent();

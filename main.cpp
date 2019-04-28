@@ -23,7 +23,7 @@ int main(int argc, char **argv)
     }
     else if(answer == "fs")
     {
-      //find student
+      m.findStudent();
     }
     else if(answer == "ff")
     {

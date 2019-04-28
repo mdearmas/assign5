@@ -113,3 +113,16 @@ void MasterStudentTree::print()
 {
   tree->printTree();
 }
+
+void MasterStudentTree::lookup(int id)
+{
+  if(tree->contains(id))
+  {
+    Student s = tree->find(id);
+    cout << id << " " << s << endl;
+  }
+  else
+  {
+    cout << "Student " << id << " does not exist." << endl;
+  }
+}
