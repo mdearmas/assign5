@@ -29,7 +29,7 @@ public:
 
   friend ostream& operator<<(ostream& os, const Student& s)
   {
-    os << s.id << " / " << s.name << " / " << s.level << " / " << s.major;
+    os << "/ " << s.name << " / " << s.level << " / " << s.major;
     os << " / " << s.advisor;
     os << " / " << s.gpa;
     return os;

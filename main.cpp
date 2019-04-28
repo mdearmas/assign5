@@ -39,11 +39,11 @@ int main(int argc, char **argv)
     }
     else if(answer == "as")
     {
-      //add student
+      m.addStudent();
     }
     else if(answer == "af")
     {
-      //add faculty
+      m.addFaculty();
     }
     else if(answer == "dls")
     {

@@ -39,3 +39,13 @@ void Menu::displayAllFaculty()
 {
   f_tree.print();
 }
+
+void Menu::addStudent()
+{
+  s_tree.addStudent();
+}
+
+void Menu::addFaculty()
+{
+  f_tree.addFaculty();
+}
