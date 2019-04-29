@@ -26,6 +26,7 @@ public:
   void print();
 
   Student lookup(int id);
+  Student* lookupPointer(int id);
 
   bool valid(int id) { return (tree->contains(id)); }
 

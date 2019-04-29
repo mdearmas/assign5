@@ -55,7 +55,7 @@ int main(int argc, char **argv)
     }
     else if(answer == "ra")
     {
-      //reassign advisor
+      m.reassignAdvisor();
     }
     else if(answer == "ras")
     {

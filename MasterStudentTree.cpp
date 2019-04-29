@@ -142,3 +142,11 @@ Student MasterStudentTree::lookup(int id)
     return s;
   }
 }
+
+Student* MasterStudentTree::lookupPointer(int id)
+{
+  if(tree->contains(id))
+  {
+    return (tree->returnPointer(id));
+  }
+}

@@ -183,6 +183,27 @@ void Menu::addFaculty()
   f_tree.addFaculty();
 }
 
+void Menu::reassignAdvisor()
+{
+  int id1, id2;
+  cout << "Enter the student's id: ";
+  cin >> id1;
+  if(cin.fail())
+    cout << "Not a valid ID number." << endl;
+  else
+  {
+    cin.ignore();
+    cout << "Enter the new advisor's id: ";
+    cin >> id2;
+    if(cin.fail())
+      cout << "Not a valid ID number." << endl;
+    else
+    {
+      reassignAdvisorBase(id1, id2);
+    }
+  }
+}
+
 void Menu::removeAdvisee()
 {
   int id1, id2;
@@ -222,6 +243,14 @@ void Menu::addAdvisee()
     {
       f_tree.lookupPointer(id1)->addAdvisee(id2);
     }
+  }
+}
+
+void Menu::reassignAdvisorBase(int student_id, int faculty_id)
+{
+  if(s_tree.valid(student_id))
+  {
+    s_tree.lookupPointer(student_id)->reassignAdvisor(faculty_id);
   }
 }
 
