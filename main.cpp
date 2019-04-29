@@ -31,7 +31,7 @@ int main(int argc, char **argv)
     }
     else if(answer == "fa")
     {
-      //find advisor
+      m.findAdvisor();
     }
     else if(answer == "fas")
     {

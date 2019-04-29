@@ -145,8 +145,4 @@ Faculty MasterFacultyTree::lookup(int id)
     Faculty f = tree->find(id);
     return f;
   }
-  else
-  {
-    cout << "Faculty " << id << " does not exist." << endl;
-  }
 }

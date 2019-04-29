@@ -87,13 +87,30 @@ void Menu::findFaculty()
 void Menu::findAdvisor()
 {
   int id;
-  cout << "Enter the faculty's id: ";
+  cout << "Enter the student's id: ";
   cin >> id;
   if(cin.fail())
     cout << "Not a valid ID number." << endl;
   else
   {
-    f_tree.lookup(id);
+    if(s_tree.valid(id))
+    {
+      Student s = s_tree.lookup(id);
+      int faculty_target = s.getAdvisor();
+      if(f_tree.valid(faculty_target))
+      {
+        Faculty f = f_tree.lookup(faculty_target);
+        cout << "Student " << id << "'s advisor is " << faculty_target << " " << f << endl;
+      }
+      else
+      {
+        cout << "Student " << id << "'s advisor does not exist in the database. " << endl;
+      }
+    }
+    else
+    {
+      cout << "This student does not exist in the database. " << endl;
+    }
   }
 }
 

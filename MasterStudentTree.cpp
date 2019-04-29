@@ -141,8 +141,4 @@ Student MasterStudentTree::lookup(int id)
     Student s = tree->find(id);
     return s;
   }
-  else
-  {
-    cout << "Student " << id << " does not exist." << endl;
-  }
 }
