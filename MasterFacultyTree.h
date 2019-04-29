@@ -8,6 +8,7 @@
 
 #include "GenBST.h"
 #include "Faculty.h"
+#include "Rollback.h"
 
 class MasterFacultyTree {
 public:
@@ -23,6 +24,9 @@ public:
   void deleteFaculty(int id);
   void print();
 
+  void store();
+  void undo();
+
   Faculty lookup(int id);
   Faculty* lookupPointer(int id);
 
@@ -32,6 +36,7 @@ public:
 
 private:
   BST<Faculty> *tree;
+  Rollback<Faculty> *stack;
 };
 
 #endif

@@ -34,6 +34,8 @@ public:
   void removeAdvisee(int student_id);
   void printAdvisees();
 
+  bool containsAdvisee(int student_id);
+
   friend ostream& operator<<(ostream& os, const Faculty& s)
   {
     os << "/ " << s.name << " / " << s.level << " / " << s.department;

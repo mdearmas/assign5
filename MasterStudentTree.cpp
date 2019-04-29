@@ -3,11 +3,13 @@
 MasterStudentTree::MasterStudentTree()
 {
   tree = new BST<Student>();
+  stack = new Rollback<Student>();
 }
 
 MasterStudentTree::~MasterStudentTree()
 {
   delete tree;
+  delete stack;
 }
 
 void MasterStudentTree::save()
@@ -139,6 +141,16 @@ void MasterStudentTree::deleteStudent(int id)
 void MasterStudentTree::print()
 {
   tree->printTree();
+}
+
+void MasterStudentTree::store()
+{
+  stack->store(tree);
+}
+
+void MasterStudentTree::undo()
+{
+  tree = stack->undo();
 }
 
 Student MasterStudentTree::lookup(int id)

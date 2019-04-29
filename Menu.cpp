@@ -175,11 +175,13 @@ void Menu::findAdvisees()
 
 void Menu::addStudent()
 {
+  store();
   s_tree.addStudent();
 }
 
 void Menu::addFaculty()
 {
+  store();
   f_tree.addFaculty();
 }
 
@@ -192,6 +194,7 @@ void Menu::deleteStudent()
     cout << "Not a valid ID number." << endl;
   else
   {
+    store();
     int advisor_id = s_tree.lookupPointer(id)->getAdvisor();
     removeAdviseeBase(advisor_id, id);
     s_tree.deleteStudent(id);
@@ -207,6 +210,8 @@ void Menu::deleteFaculty()
     cout << "Not a valid ID number." << endl;
   else
   {
+    store();
+
     string advisee_list = f_tree.lookupPointer(id)->getAdvisees();
     f_tree.deleteFaculty(id);
 
@@ -252,6 +257,7 @@ void Menu::reassignAdvisor()
       cout << "Not a valid ID number." << endl;
     else
     {
+      store();
       reassignAdvisorBase(id1, id2);
     }
   }
@@ -262,7 +268,7 @@ void Menu::removeAdvisee()
   int id1, id2;
   cout << "Enter the faculty's id: ";
   cin >> id1;
-  if(cin.fail() || !f_tree.valid(id2))
+  if(cin.fail() || !f_tree.valid(id1))
     cout << "Not a valid ID number." << endl;
   else
   {
@@ -273,6 +279,7 @@ void Menu::removeAdvisee()
       cout << "Not a valid ID number." << endl;
     else
     {
+      store();
       removeAdviseeBase(id1, id2);
     }
   }
@@ -292,8 +299,11 @@ void Menu::addAdvisee()
     cin >> id2;
     if(cin.fail())
       cout << "Not a valid ID number." << endl;
+    else if(f_tree.lookupPointer(id1)->containsAdvisee(id2))
+      cout << "Advisee is already assigned." << endl;
     else
     {
+      store();
       f_tree.lookupPointer(id1)->addAdvisee(id2);
     }
   }
@@ -301,9 +311,10 @@ void Menu::addAdvisee()
 
 void Menu::reassignAdvisorBase(int student_id, int faculty_id)
 {
-  if(s_tree.valid(student_id))
+  if(s_tree.valid(student_id) && f_tree.valid(faculty_id))
   {
     s_tree.lookupPointer(student_id)->reassignAdvisor(faculty_id);
+    f_tree.lookupPointer(faculty_id)->addAdvisee(student_id);
   }
 }
 
@@ -313,4 +324,16 @@ void Menu::removeAdviseeBase(int faculty_id, int student_id)
   {
     f_tree.lookupPointer(faculty_id)->removeAdvisee(student_id);
   }
+}
+
+void Menu::store()
+{
+  s_tree.store();
+  f_tree.store();
+}
+
+void Menu::undo()
+{
+  s_tree.undo();
+  f_tree.undo();
 }

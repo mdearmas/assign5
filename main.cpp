@@ -67,7 +67,7 @@ int main(int argc, char **argv)
     }
     else if(answer == "u")
     {
-      //rollback
+      m.undo();
     }
     else if(answer == "e")
     {

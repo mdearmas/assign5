@@ -8,6 +8,7 @@
 
 #include "GenBST.h"
 #include "Student.h"
+#include "Rollback.h"
 
 using namespace std;
 
@@ -26,6 +27,9 @@ public:
   void deleteStudent(int id);
   void print();
 
+  void store();
+  void undo();
+
   Student lookup(int id);
   Student* lookupPointer(int id);
 
@@ -33,6 +37,7 @@ public:
 
 private:
   BST<Student> *tree;
+  Rollback<Student> *stack;
 };
 #endif
 

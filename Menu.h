@@ -38,6 +38,9 @@ public:
   void reassignAdvisorBase(int student_id, int faculty_id);
   void removeAdviseeBase(int faculty_id, int student_id);
 
+  void store();
+  void undo();
+
 private:
   MasterFacultyTree f_tree;
   MasterStudentTree s_tree;

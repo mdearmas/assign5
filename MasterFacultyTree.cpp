@@ -3,11 +3,13 @@
 MasterFacultyTree::MasterFacultyTree()
 {
   tree = new BST<Faculty>();
+  stack = new Rollback<Faculty>();
 }
 
 MasterFacultyTree::~MasterFacultyTree()
 {
   delete tree;
+  delete stack;
 }
 
 void MasterFacultyTree::save()
@@ -143,6 +145,16 @@ void MasterFacultyTree::deleteFaculty(int id)
 void MasterFacultyTree::print()
 {
   tree->printTree();
+}
+
+void MasterFacultyTree::store()
+{
+  stack->store(tree);
+}
+
+void MasterFacultyTree::undo()
+{
+  tree = stack->undo();
 }
 
 Faculty MasterFacultyTree::lookup(int id)
