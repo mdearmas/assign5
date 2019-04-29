@@ -241,7 +241,7 @@ void Menu::reassignAdvisor()
   int id1, id2;
   cout << "Enter the student's id: ";
   cin >> id1;
-  if(cin.fail())
+  if(cin.fail() || !s_tree.valid(id1))
     cout << "Not a valid ID number." << endl;
   else
   {
@@ -262,7 +262,7 @@ void Menu::removeAdvisee()
   int id1, id2;
   cout << "Enter the faculty's id: ";
   cin >> id1;
-  if(cin.fail())
+  if(cin.fail() || !f_tree.valid(id2))
     cout << "Not a valid ID number." << endl;
   else
   {
