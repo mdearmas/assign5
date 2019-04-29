@@ -75,5 +75,9 @@ int main(int argc, char **argv)
     {
       cout << "Not a valid command." << endl;
     }
+
+    cin.clear();
+    cin.ignore(1024, '\n');
+    cout << endl;
   }
 }

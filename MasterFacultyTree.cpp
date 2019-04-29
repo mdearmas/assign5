@@ -83,34 +83,54 @@ void MasterFacultyTree::addFaculty()
   int i, a, s;
   string n, l, d;
 
-  cout << "Enter the faculty's ID: ";
-  cin >> i;
-  cin.ignore();
-
-  cout << "Enter the faculty's name: ";
-  getline(cin, n);
-
-  cout << "Enter the faculty's position: ";
-  getline(cin, l);
-
-  cout << "Enter the faculty's department: ";
-  getline(cin, d);
-
-  Faculty new_faculty(i, n, l, d);
-
-  cout << "How many advisees does this faculty member have? ";
-  cin >> a;
-  cin.ignore();
-
-  for(int k = 0; k < a; ++k)
+  try
   {
-    cout << "Enter the advisee's student ID: ";
-    cin >> s;
+    cout << "Enter the faculty's ID: ";
+    cin >> i;
+    if(cin.fail())
+    {
+      throw BadInputException("Not a valid ID number.");
+    }
     cin.ignore();
-    new_faculty.addAdvisee(s);
-  }
 
-  tree->insertBST(i, new_faculty);
+    cout << "Enter the faculty's name: ";
+    getline(cin, n);
+
+    cout << "Enter the faculty's position: ";
+    getline(cin, l);
+
+    cout << "Enter the faculty's department: ";
+    getline(cin, d);
+
+    Faculty new_faculty(i, n, l, d);
+
+    cout << "How many advisees does this faculty member have? ";
+    cin >> a;
+    if(cin.fail())
+    {
+      throw BadInputException("Not a valid number of advisees.");
+    }
+    cin.ignore();
+
+    for(int k = 0; k < a; ++k)
+    {
+      cout << "Enter the advisee's student ID: ";
+      cin >> s;
+      if(cin.fail())
+      {
+        tree->insertBST(i, new_faculty);
+        throw BadInputException("Not a valid ID number.");
+      }
+      cin.ignore();
+      new_faculty.addAdvisee(s);
+    }
+    tree->insertBST(i, new_faculty);
+    cout << "Faculty added successfully. Press [ENTER] to continue." << endl;
+  }
+  catch(BadInputException& e)
+  {
+    cout << e.getErrorMessage() << endl;
+  }
 }
 
 void MasterFacultyTree::print()
@@ -118,12 +138,12 @@ void MasterFacultyTree::print()
   tree->printTree();
 }
 
-void MasterFacultyTree::lookup(int id)
+Faculty MasterFacultyTree::lookup(int id)
 {
   if(tree->contains(id))
   {
     Faculty f = tree->find(id);
-    cout << id << " " << f << endl;
+    return f;
   }
   else
   {

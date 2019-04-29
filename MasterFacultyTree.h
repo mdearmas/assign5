@@ -21,10 +21,26 @@ public:
 
   void addFaculty();
   void print();
-  void lookup(int id);
+
+  Faculty lookup(int id);
+
+  bool valid(int id) { return (tree->contains(id)); }
 
 private:
   BST<Faculty> *tree;
 };
 
+#endif
+
+#ifndef BAD_INPUT_EXCEPTION_H_
+#define BAD_INPUT_EXCEPTION_H_
+
+class BadInputException //class definition for an exception that is thrown if the file has incorrect format
+{
+public:
+  BadInputException(string message) : error_message(message) { } //constructor with initializer list
+  string getErrorMessage() { return error_message; } //accessor that returns the error message
+private:
+  string error_message; //the error message associated with the error object
+};
 #endif

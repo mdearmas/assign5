@@ -84,29 +84,49 @@ void MasterStudentTree::addStudent()
   string n, l, m;
   double g;
 
-  cout << "Enter the student's ID: ";
-  cin >> i;
-  cin.ignore();
+  try
+  {
+    cout << "Enter the student's ID: ";
+    cin >> i;
+    if(cin.fail())
+    {
+      throw BadInputException("Not a valid ID number.");
+    }
+    cin.ignore();
 
-  cout << "Enter the student's name: ";
-  getline(cin, n);
+    cout << "Enter the student's name: ";
+    getline(cin, n);
 
-  cout << "Enter the student's grade level: ";
-  getline(cin, l);
+    cout << "Enter the student's grade level: ";
+    getline(cin, l);
 
-  cout << "Enter the student's major: ";
-  getline(cin, m);
+    cout << "Enter the student's major: ";
+    getline(cin, m);
 
-  cout << "Enter the student's GPA: ";
-  cin >> g;
-  cin.ignore();
+    cout << "Enter the student's GPA: ";
+    cin >> g;
+    if(cin.fail())
+    {
+      throw BadInputException("Not a valid GPA.");
+    }
+    cin.ignore();
 
-  cout << "Enter the student's advisor: ";
-  cin >> a;
-  cin.ignore();
+    cout << "Enter the student's advisor: ";
+    cin >> a;
+    if(cin.fail())
+    {
+      throw BadInputException("Not a valid GPA.");
+    }
+    cin.ignore();
 
-  Student new_student(i, n, l, a, m, g);
-  tree->insertBST(i, new_student);
+    Student new_student(i, n, l, a, m, g);
+    tree->insertBST(i, new_student);
+    cout << "Student added successfully. Press [ENTER] to continue.";
+  }
+  catch(BadInputException& e)
+  {
+    cout << e.getErrorMessage() << endl;
+  }
 }
 
 void MasterStudentTree::print()
@@ -114,12 +134,12 @@ void MasterStudentTree::print()
   tree->printTree();
 }
 
-void MasterStudentTree::lookup(int id)
+Student MasterStudentTree::lookup(int id)
 {
   if(tree->contains(id))
   {
     Student s = tree->find(id);
-    cout << id << " " << s << endl;
+    return s;
   }
   else
   {

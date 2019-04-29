@@ -22,7 +22,7 @@ public:
   void findStudent();
   void findFaculty();
 
-  void findAdvisor(int id);
+  void findAdvisor();
   void findAdvisees(int id);
 
   void addStudent();

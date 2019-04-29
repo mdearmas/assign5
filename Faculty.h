@@ -11,13 +11,13 @@ public:
   Faculty():Person() //default constructor
   {
     department = "Unassgined";
-    advisee_list = "";
+    advisee_list = "/";
   }
 
   Faculty(int i, string n, string l, string d):Person(i, n, l) //overloaded constructor
   {
     department = d;
-    advisee_list = "";
+    advisee_list = "/";
   }
 
   Faculty(int i, string n, string l, string d, string a):Person(i, n, l) //overloaded constructor 2, used specifically for deserialization

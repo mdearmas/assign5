@@ -49,11 +49,42 @@ void Menu::findStudent()
     cout << "Not a valid ID number." << endl;
   else
   {
-    s_tree.lookup(id);
+    if(f_tree.valid(id))
+    {
+      Student s = s_tree.lookup(id);
+      cout << id << " " << s << endl;
+    }
+    else
+    {
+      cout << "Student does not exist." << endl;
+    }
   }
+  cin.clear();
 }
 
 void Menu::findFaculty()
+{
+  int id;
+  cout << "Enter the faculty's id: ";
+  cin >> id;
+  if(cin.fail())
+    cout << "Not a valid ID number." << endl;
+  else
+  {
+    if(f_tree.valid(id))
+    {
+      Faculty f = f_tree.lookup(id);
+      cout << id << " " << f << endl;
+    }
+    else
+    {
+      cout << "Faculty does not exist." << endl;
+    }
+  }
+  cin.clear();
+}
+
+void Menu::findAdvisor()
 {
   int id;
   cout << "Enter the faculty's id: ";
