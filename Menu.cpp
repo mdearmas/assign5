@@ -183,6 +183,21 @@ void Menu::addFaculty()
   f_tree.addFaculty();
 }
 
+void Menu::deleteStudent()
+{
+  int id;
+  cout << "Enter the student's id: ";
+  cin >> id;
+  if(cin.fail() || !s_tree.valid(id))
+    cout << "Not a valid ID number." << endl;
+  else
+  {
+    int advisor_id = s_tree.lookupPointer(id)->getAdvisor();
+    removeAdviseeBase(advisor_id, id);
+    s_tree.deleteStudent(id);
+  }
+}
+
 void Menu::reassignAdvisor()
 {
   int id1, id2;

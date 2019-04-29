@@ -129,6 +129,11 @@ void MasterStudentTree::addStudent()
   }
 }
 
+void MasterStudentTree::deleteStudent(int id)
+{
+  tree->deleteBST(id);
+}
+
 void MasterStudentTree::print()
 {
   tree->printTree();

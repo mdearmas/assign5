@@ -47,7 +47,7 @@ int main(int argc, char **argv)
     }
     else if(answer == "dls")
     {
-      //delete student
+      m.deleteStudent();
     }
     else if(answer == "dlf")
     {

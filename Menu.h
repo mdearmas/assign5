@@ -28,8 +28,8 @@ public:
   void addStudent();
   void addFaculty();
 
-  void deleteStudent(int id);
-  void deleteFaculty(int id);
+  void deleteStudent();
+  void deleteFaculty();
 
   void reassignAdvisor();
   void removeAdvisee();

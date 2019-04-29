@@ -23,6 +23,7 @@ public:
   void deserialize(ifstream& f);
 
   void addStudent();
+  void deleteStudent(int id);
   void print();
 
   Student lookup(int id);
