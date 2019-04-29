@@ -20,10 +20,13 @@ public:
   void deserialize(ifstream& f);
 
   void addFaculty();
+  void deleteFaculty(int id);
   void print();
 
   Faculty lookup(int id);
   Faculty* lookupPointer(int id);
+
+  int getRootID() { return (tree->getRootKey()); }
 
   bool valid(int id) { return (tree->contains(id)); }
 

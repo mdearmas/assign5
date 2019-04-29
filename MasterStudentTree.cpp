@@ -131,7 +131,9 @@ void MasterStudentTree::addStudent()
 
 void MasterStudentTree::deleteStudent(int id)
 {
-  tree->deleteBST(id);
+  bool success = tree->deleteBST(id);
+  if(!success)
+    cout << "Was unable to delete the requested student. " << endl;
 }
 
 void MasterStudentTree::print()

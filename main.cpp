@@ -51,7 +51,7 @@ int main(int argc, char **argv)
     }
     else if(answer == "dlf")
     {
-      //delete faculty
+      m.deleteFaculty();
     }
     else if(answer == "ra")
     {

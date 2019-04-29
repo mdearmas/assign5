@@ -198,6 +198,44 @@ void Menu::deleteStudent()
   }
 }
 
+void Menu::deleteFaculty()
+{
+  int id;
+  cout << "Enter the faculty's id: ";
+  cin >> id;
+  if(cin.fail() || !f_tree.valid(id))
+    cout << "Not a valid ID number." << endl;
+  else
+  {
+    string advisee_list = f_tree.lookupPointer(id)->getAdvisees();
+    f_tree.deleteFaculty(id);
+
+    vector<int> iterable_list;
+    stringstream temp(advisee_list);
+
+    bool first = true;
+    string student;
+
+    while(getline(temp, student, '/'))
+    {
+      if(first)
+        first = false;
+      else
+      {
+        iterable_list.push_back(stoi(student));
+      }
+    }
+
+    for(int i = 0; i < iterable_list.size(); ++i)
+    {
+      if(s_tree.valid(iterable_list[i]))
+      {
+        reassignAdvisorBase(iterable_list[i], f_tree.getRootID());
+      }
+    }
+  }
+}
+
 void Menu::reassignAdvisor()
 {
   int id1, id2;

@@ -133,6 +133,13 @@ void MasterFacultyTree::addFaculty()
   }
 }
 
+void MasterFacultyTree::deleteFaculty(int id)
+{
+  bool success = tree->deleteBST(id);
+  if(!success)
+    cout << "Was unable to delete the requested faculty. " << endl;
+}
+
 void MasterFacultyTree::print()
 {
   tree->printTree();

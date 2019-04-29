@@ -4,7 +4,6 @@
 #include <sstream>
 #include <vector>
 #include "Person.h"
-#include "DoublyLinkedList.h"
 
 class Faculty : public Person {
 public:

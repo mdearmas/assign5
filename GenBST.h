@@ -308,6 +308,8 @@ public:
     }
   }
 
+  int getRootKey() { return root->key; }
+
   TreeNode<T>* root;
 };
 
