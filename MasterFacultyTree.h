@@ -23,6 +23,7 @@ public:
   void print();
 
   Faculty lookup(int id);
+  Faculty* lookupPointer(int id);
 
   bool valid(int id) { return (tree->contains(id)); }
 

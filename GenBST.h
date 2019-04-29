@@ -140,6 +140,26 @@ public:
     }
   }
 
+  T* returnPointer(int k)
+  {
+    if(!isEmpty() && contains(k))
+    {
+      TreeNode<T>* curr = root;
+      while(k != curr->key)
+      {
+        if(k < curr->key)
+          curr = curr->left;
+        else
+          curr = curr->right;
+      }
+      return &(curr->data);
+    }
+    else
+    {
+      cout << "Error: Can not find requested value." << endl;
+    }
+  }
+
   TreeNode<T>* getSuccessor(TreeNode<T>* d)
   {
     TreeNode<T> *sp = d; //successor's parent

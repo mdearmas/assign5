@@ -142,7 +142,14 @@ Faculty MasterFacultyTree::lookup(int id)
 {
   if(tree->contains(id))
   {
-    Faculty f = tree->find(id);
-    return f;
+    return (tree->find(id));
+  }
+}
+
+Faculty* MasterFacultyTree::lookupPointer(int id)
+{
+  if(tree->contains(id))
+  {
+    return (tree->returnPointer(id));
   }
 }

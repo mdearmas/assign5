@@ -59,7 +59,11 @@ int main(int argc, char **argv)
     }
     else if(answer == "ras")
     {
-      //remove advisee
+      m.removeAdvisee();
+    }
+    else if(answer == "aas")
+    {
+      m.addAdvisee();
     }
     else if(answer == "u")
     {

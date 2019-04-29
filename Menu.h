@@ -31,8 +31,12 @@ public:
   void deleteStudent(int id);
   void deleteFaculty(int id);
 
-  void reassignAdvisor(int student_id, int faculty_id);
-  void removeAdvisee(int faculty_id, int student_id);
+  void reassignAdvisor();
+  void removeAdvisee();
+  void addAdvisee();
+
+  void reassignAdvisorBase(int student_id, int faculty_id);
+  void removeAdviseeBase(int faculty_id, int student_id);
 
 private:
   MasterFacultyTree f_tree;

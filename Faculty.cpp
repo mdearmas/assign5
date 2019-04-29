@@ -9,12 +9,19 @@ void Faculty::removeAdvisee(int student_id)
 {
   vector<int> advisee_vector;
   string number;
-  string placeholder = "";
+  string placeholder = "/";
   stringstream s(advisee_list);
+
+  bool first = true;
 
   while(getline(s, number, '/')) //converts the string advisee_list into an iterable vector of ints
   {
-    advisee_vector.push_back(stoi(number));
+    if(first)
+      first = false;
+    else
+    {
+      advisee_vector.push_back(stoi(number));
+    }
   }
 
   for(int i = 0; i < advisee_vector.size(); ++i)

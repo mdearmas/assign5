@@ -26,7 +26,7 @@ void Menu::printMenu()
   cout << "Find Advisor (fa)   Find Advisees (fas)" << endl;
   cout << "Add Student (as)     Add Faculty (af)" << endl;
   cout << "Delete Student (dls)   Delete Faculty (dlf)" << endl;
-  cout << "Reassign Advisor (ra)    Remove Advisee (ras)" << endl;
+  cout << "Reassign Advisor (ra)    Remove Advisee (ras)    Add Advisee (aas)" << endl;
   cout << "Undo (u)   Exit (e)" << endl;
 }
 
@@ -181,4 +181,54 @@ void Menu::addStudent()
 void Menu::addFaculty()
 {
   f_tree.addFaculty();
+}
+
+void Menu::removeAdvisee()
+{
+  int id1, id2;
+  cout << "Enter the faculty's id: ";
+  cin >> id1;
+  if(cin.fail())
+    cout << "Not a valid ID number." << endl;
+  else
+  {
+    cin.ignore();
+    cout << "Enter the student's id: ";
+    cin >> id2;
+    if(cin.fail())
+      cout << "Not a valid ID number." << endl;
+    else
+    {
+      removeAdviseeBase(id1, id2);
+    }
+  }
+}
+
+void Menu::addAdvisee()
+{
+  int id1, id2;
+  cout << "Enter the faculty's id: ";
+  cin >> id1;
+  if(cin.fail() || !f_tree.valid(id1))
+    cout << "Not a valid ID number." << endl;
+  else
+  {
+    cin.ignore();
+    cout << "Enter the student's id: ";
+    cin >> id2;
+    if(cin.fail())
+      cout << "Not a valid ID number." << endl;
+    else
+    {
+      f_tree.lookupPointer(id1)->addAdvisee(id2);
+    }
+  }
+}
+
+void Menu::removeAdviseeBase(int faculty_id, int student_id)
+{
+  if(f_tree.valid(faculty_id))
+  {
+    f_tree.lookupPointer(faculty_id)->removeAdvisee(student_id);
+  }
 }
