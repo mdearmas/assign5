@@ -125,7 +125,7 @@ void MasterFacultyTree::addFaculty()
       new_faculty.addAdvisee(s);
     }
     tree->insertBST(i, new_faculty);
-    cout << "Faculty added successfully. Press [ENTER] to continue." << endl;
+    cout << "Faculty added successfully. Press [ENTER] to continue.";
   }
   catch(BadInputException& e)
   {

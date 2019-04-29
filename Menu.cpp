@@ -114,6 +114,65 @@ void Menu::findAdvisor()
   }
 }
 
+void Menu::findAdvisees()
+{
+  int id;
+  cout << "Enter the faculty's id: ";
+  cin >> id;
+  if(cin.fail())
+    cout << "Not a valid ID number." << endl;
+  else
+  {
+    if(f_tree.valid(id))
+    {
+      Faculty f = f_tree.lookup(id);
+      string temp_list = f.getAdvisees();
+      string student;
+
+      vector<int> iterable_list;
+
+      stringstream temp(temp_list);
+
+      bool first = true;
+
+      while(getline(temp, student, '/'))
+      {
+        if(first)
+          first = false;
+        else
+        {
+          iterable_list.push_back(stoi(student));
+        }
+      }
+
+      if(iterable_list.size() == 0)
+        cout << "Faculty " << id << " is not currently advising any students." << endl;
+      else
+      {
+        Student s;
+
+        cout << "Faculty " << id << " is currently advising the following students: " << endl;
+        for(int i = 0; i < iterable_list.size(); ++i)
+        {
+          if(s_tree.valid(iterable_list[i]))
+          {
+            s = s_tree.lookup(iterable_list[i]);
+            cout << iterable_list[i] << " " << s << endl;
+          }
+          else
+          {
+            cout << "Student " << iterable_list[i] << " does not exist in the database. " << endl;
+          }
+        }
+      }
+    }
+    else
+    {
+      cout << "This faculty does not exist in the database. " << endl;
+    }
+  }
+}
+
 void Menu::addStudent()
 {
   s_tree.addStudent();
