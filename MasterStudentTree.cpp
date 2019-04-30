@@ -151,7 +151,10 @@ void MasterStudentTree::store()
 
 void MasterStudentTree::undo()
 {
-  tree = stack->undo();
+  if(stack->possible())
+    tree = stack->undo();
+  else
+    cout << "Nothing left to undo to the student database." << endl;
 }
 
 Student MasterStudentTree::lookup(int id)

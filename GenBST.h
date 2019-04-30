@@ -1,3 +1,14 @@
+/*
+Makenzie De Armas
+ID: 2278709
+dearm102@mail.chapman.edu
+CPSC 350-01
+Assignment 5: Building a Database with Binary Search Trees
+Purpose: This file, GenBST.h, contains the templates for both a BST key-value pair tree node and a BST.
+Includes all the functionality of a BST interface [insert, delete, contains, find, isEmpty, etc.] as well as
+a few unique methods like copy, getRootKey, and getNextKey that assist with the specific needs of this assignment.
+*/
+
 #ifndef GEN_BST_H_
 #define GEN_BST_H_
 
@@ -5,16 +16,17 @@
 
 using namespace std;
 
+//Tree Node template
 template <typename T>
 class TreeNode {
 public:
-  TreeNode()
+  TreeNode() //default constructor
   {
     left = NULL;
     right = NULL;
   }
 
-  TreeNode(int k, T obj)
+  TreeNode(int k, T obj) //overloaded constructor
   {
     key = k;
     data = obj;
@@ -22,33 +34,33 @@ public:
     right = NULL;
   }
 
-  ~TreeNode()
+  ~TreeNode() //destructor, since nothing is allocated with new, the pointers are just nulled out
   {
     left = NULL;
     right = NULL;
   }
 
-  int key;
+  int key; //the int key used for sorting
   T data;
   TreeNode<T> *left;
   TreeNode<T> *right;
 };
 
-//defining Tree class
+//template Tree class
 template <typename T>
 class BST {
 public:
-  BST()
+  BST() //default constructor
   {
     root = NULL;
   }
 
-  ~BST()
+  ~BST()//virtual destructor (in the event that we want to construct a red-black tree or other self balancing tree)
   {
-    destroyRec(root);
+    destroyRec(root); //iterates through the tree starting at the root
   }
 
-  void destroyRec(TreeNode<T>* node)
+  void destroyRec(TreeNode<T>* node) //recursive destructor, iterates through the tree and destorys the allocated nodes
   {
     if(node != NULL)
     {
@@ -58,6 +70,7 @@ public:
     }
   }
 
+  //inserts a new node into the tree
   void insertBST(int k, T v)
   {
     if(!contains(k)) //check if key already exists, if not continue
@@ -98,6 +111,7 @@ public:
     }
   }
 
+  //checks if the tree already contains a key
   bool contains(int k)
   {
     if(isEmpty())
@@ -120,9 +134,10 @@ public:
     return true;
   }
 
+  //returns a copy of the data associated with an input key
   T find(int k)
   {
-    if(!isEmpty() && contains(k))
+    if(!isEmpty() && contains(k)) //as long as the tree is not empty and does contain the passed key, continue
     {
       TreeNode<T>* curr = root;
       while(k != curr->key)
@@ -140,6 +155,7 @@ public:
     }
   }
 
+  //returns a pointer to the data stored in a tree rather than a copy
   T* returnPointer(int k)
   {
     if(!isEmpty() && contains(k))
@@ -160,6 +176,7 @@ public:
     }
   }
 
+  //finds the node that will succeed another in a deletion
   TreeNode<T>* getSuccessor(TreeNode<T>* d)
   {
     TreeNode<T> *sp = d; //successor's parent
@@ -182,6 +199,7 @@ public:
     return successor;
   }
 
+  //deletes a tree node corresponding to the passed key
   bool deleteBST(int k)
   {
     if(isEmpty()) //if the tree is empty, nothing can be deleted
@@ -272,13 +290,16 @@ public:
     return true;
   }
 
+  //checks if the tree contains any data
   bool isEmpty() { return (root == NULL); }
 
+  //prints the entire tree in ascending key order
   void printTree()
   {
     inOrderPrint(root);
   }
 
+  //recursively iterates through a tree to print nodes in ascending order
   void inOrderPrint(TreeNode<T>* n)
   {
     if(n == NULL)
@@ -289,6 +310,7 @@ public:
     inOrderPrint(n->right);
   }
 
+  //returns a pointer to the copy of a whole tree
   BST* copy()
   {
     BST* copy = new BST();
@@ -296,6 +318,7 @@ public:
     return copy;
   }
 
+  //copies a subtree based on parameters
   void recursiveCopy(TreeNode<T>* node, BST* b)
   {
     if(node == NULL)
@@ -308,8 +331,10 @@ public:
     }
   }
 
+  //returns the key associated with a root
   int getRootKey() { return root->key; }
 
+  //gets the key of the successor, with special exception if the tree is empty. this helps later with advisor reassignment.
   int getNextKey()
   {
     if(isEmpty())

@@ -29,7 +29,12 @@ public:
 
   BST<T>* undo()
   {
-    core->pop();
+    return core->pop();
+  }
+
+  bool possible()
+  {
+    return !(core->isEmpty());
   }
 
 private:

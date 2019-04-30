@@ -3,11 +3,14 @@
   ID: 2278709
   dearm102@mail.chapman.edu
   CPSC 350-01
-  Assignment 3: Syntax Checker
+  Assignment 5: Building a Database with Binary Search Trees
   Purpose: This file, GenStack.h, contains the template GenStack class. This creates an array-based stack interface that
   can be implemented with any data type. The stack resizes itself if elements exceed the capacity of the array. Also included
   is an EmptyStackException class, which is thrown if the program attempts to pop() or peek() an empty stack.
 */
+
+#ifndef GENSTACK_H_
+#define GENSTACK_H_
 
 #include <iostream> //allows access to input/output
 
@@ -38,6 +41,11 @@ public:
   T* myArray; //the array that forms the basis of the stack
 };
 
+#endif
+
+#ifndef EMPTY_STACK_EXCEPTION_H_
+#define EMPTY_STACK_EXCEPTION_H_
+
 class EmptyStackException //class definition for an exception that is thrown if the user attempts to interact with an empty stack
 {
 public:
@@ -46,6 +54,8 @@ public:
 private:
   string error_message; //the error message associated with the error object
 };
+
+#endif
 
 //out-of-class member functions for GenStack
 

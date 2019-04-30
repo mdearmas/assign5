@@ -1,3 +1,12 @@
+/*
+Makenzie De Armas
+ID: 2278709
+dearm102@mail.chapman.edu
+CPSC 350-01
+Assignment 5: Building a Database with Binary Search Trees
+Purpose: This file, Person.h, contains the base class header for both the Faculty and Student classes.
+Includes overloaded operators for comparison.
+*/
 #ifndef PERSON_H_
 #define PERSON_H_
 

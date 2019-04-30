@@ -155,7 +155,10 @@ void MasterFacultyTree::store()
 
 void MasterFacultyTree::undo()
 {
-  tree = stack->undo();
+  if(stack->possible())
+    tree = stack->undo();
+  else
+    cout << "Nothing left to undo to the faculty database." << endl;
 }
 
 Faculty MasterFacultyTree::lookup(int id)
