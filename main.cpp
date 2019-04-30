@@ -5,9 +5,9 @@ ID: 2278709
 dearm102@mail.chapman.edu
 CPSC 350-01
 Assignment 5: Building a Database with Binary Search Trees
-Purpose: This file, main.cpp, runs the actual Registrar Simulation. It allows the user to input a filename and then,
-via the Simulation object, reports to the console the events of the simulation before finally outputting the statistics
-of the simulation.
+Purpose: This file, main.cpp, runs the actual menu and allows for user interaction.
+Based off the menu object, the main program allows the user to input a command and then runs the respective operation.
+The menu continues to run until the user exits.
 */
 #include "Menu.h"
 

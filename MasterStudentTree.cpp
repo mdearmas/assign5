@@ -15,14 +15,14 @@ MasterStudentTree::~MasterStudentTree()
 void MasterStudentTree::save()
 {
   ofstream fout;
-  fout.open("masterStudent.csv", ios::out);
+  fout.open("studentTable.csv", ios::out);
   serialize(tree->root, fout);
 }
 
 void MasterStudentTree::load()
 {
   ifstream fin;
-  fin.open("masterStudent.csv", ios::in);
+  fin.open("studentTable.csv", ios::in);
   if(fin.is_open())
   {
     deserialize(fin);
