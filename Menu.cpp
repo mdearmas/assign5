@@ -26,7 +26,7 @@ void Menu::printMenu()
   cout << "Find Advisor (fa)   Find Advisees (fas)" << endl;
   cout << "Add Student (as)     Add Faculty (af)" << endl;
   cout << "Delete Student (dls)   Delete Faculty (dlf)" << endl;
-  cout << "Reassign Advisor (ra)    Remove Advisee (ras)    Add Advisee (aas)" << endl;
+  cout << "Reassign Advisor (ra)    Remove Advisee (ras)" << endl;
   cout << "Undo (u)   Exit (e)" << endl;
 }
 
@@ -177,6 +177,7 @@ void Menu::addStudent()
 {
   store();
   int i = s_tree.addStudent();
+  cout << endl;
   int adv = s_tree.lookupPointer(i)->getAdvisor();
   if(f_tree.valid(adv))
     f_tree.lookupPointer(adv)->addAdvisee(i);
@@ -188,6 +189,7 @@ void Menu::addFaculty()
 {
   store();
   int i = f_tree.addFaculty();
+  cout << endl;
 
   string advisee_list = f_tree.lookupPointer(i)->getAdvisees();
 
@@ -333,30 +335,6 @@ void Menu::removeAdvisee()
           cout << "The faculty tree is empty. Defaulting to an advisor id of -1." << endl;
         reassignAdvisorBase(id2, f_tree.getNextID());
       }
-    }
-  }
-}
-
-void Menu::addAdvisee()
-{
-  int id1, id2;
-  cout << "Enter the faculty's id: ";
-  cin >> id1;
-  if(cin.fail() || !f_tree.valid(id1))
-    cout << "Not a valid ID number." << endl;
-  else
-  {
-    cin.ignore();
-    cout << "Enter the student's id: ";
-    cin >> id2;
-    if(cin.fail())
-      cout << "Not a valid ID number." << endl;
-    else if(f_tree.lookupPointer(id1)->containsAdvisee(id2))
-      cout << "Advisee is already assigned." << endl;
-    else
-    {
-      store();
-      f_tree.lookupPointer(id1)->addAdvisee(id2);
     }
   }
 }

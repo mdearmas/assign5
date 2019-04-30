@@ -35,7 +35,6 @@ public:
 
   void reassignAdvisor();
   void removeAdvisee();
-  void addAdvisee();
 
   void reassignAdvisorBase(int student_id, int faculty_id);
   void removeAdviseeBase(int faculty_id, int student_id);
