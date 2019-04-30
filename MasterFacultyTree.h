@@ -20,7 +20,7 @@ public:
   void serialize(TreeNode<Faculty> *s, ofstream& f); //recursive serialization
   void deserialize(ifstream& f);
 
-  void addFaculty();
+  int addFaculty();
   void deleteFaculty(int id);
   void print();
 
@@ -31,8 +31,10 @@ public:
   Faculty* lookupPointer(int id);
 
   int getRootID() { return (tree->getRootKey()); }
+  int getNextID() { return (tree->getNextKey()); }
 
   bool valid(int id) { return (tree->contains(id)); }
+  bool empty() { return (tree->isEmpty()); }
 
 private:
   BST<Faculty> *tree;

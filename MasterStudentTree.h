@@ -23,7 +23,7 @@ public:
   void serialize(TreeNode<Student> *s, ofstream& f); //recursive serialization
   void deserialize(ifstream& f);
 
-  void addStudent();
+  int addStudent();
   void deleteStudent(int id);
   void print();
 

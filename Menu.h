@@ -2,6 +2,8 @@
 #define MENU_H_
 
 #include <iostream>
+#include <vector>
+#include <sstream>
 
 #include "MasterFacultyTree.h"
 #include "MasterStudentTree.h"

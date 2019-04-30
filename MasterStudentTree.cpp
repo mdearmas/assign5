@@ -80,7 +80,7 @@ void MasterStudentTree::deserialize(ifstream& f)
   }
 }
 
-void MasterStudentTree::addStudent()
+int MasterStudentTree::addStudent()
 {
   int i, a;
   string n, l, m;
@@ -124,6 +124,7 @@ void MasterStudentTree::addStudent()
     Student new_student(i, n, l, a, m, g);
     tree->insertBST(i, new_student);
     cout << "Student added successfully. Press [ENTER] to continue.";
+    return i;
   }
   catch(BadInputException& e)
   {

@@ -310,6 +310,16 @@ public:
 
   int getRootKey() { return root->key; }
 
+  int getNextKey()
+  {
+    if(isEmpty())
+      return -1;
+    else if(root->left != NULL)
+      return root->left->key;
+    else
+      return root->right->key;
+  }
+
   TreeNode<T>* root;
 };
 

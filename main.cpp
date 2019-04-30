@@ -1,3 +1,14 @@
+
+/*
+Makenzie De Armas
+ID: 2278709
+dearm102@mail.chapman.edu
+CPSC 350-01
+Assignment 5: Building a Database with Binary Search Trees
+Purpose: This file, main.cpp, runs the actual Registrar Simulation. It allows the user to input a filename and then,
+via the Simulation object, reports to the console the events of the simulation before finally outputting the statistics
+of the simulation.
+*/
 #include "Menu.h"
 
 int main(int argc, char **argv)

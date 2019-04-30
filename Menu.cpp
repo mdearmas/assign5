@@ -176,13 +176,48 @@ void Menu::findAdvisees()
 void Menu::addStudent()
 {
   store();
-  s_tree.addStudent();
+  int i = s_tree.addStudent();
+  int adv = s_tree.lookupPointer(i)->getAdvisor();
+  if(f_tree.valid(adv))
+    f_tree.lookupPointer(adv)->addAdvisee(i);
+  else
+    cout << "WARNING: This student's advisor is not in the database. " << endl;
 }
 
 void Menu::addFaculty()
 {
   store();
-  f_tree.addFaculty();
+  int i = f_tree.addFaculty();
+
+  string advisee_list = f_tree.lookupPointer(i)->getAdvisees();
+
+  vector<int> iterable_list;
+  stringstream temp(advisee_list);
+
+  bool first = true;
+  string student;
+
+  while(getline(temp, student, '/'))
+  {
+    if(first)
+      first = false;
+    else
+    {
+      iterable_list.push_back(stoi(student));
+    }
+  }
+
+  for(int j = 0; j < iterable_list.size(); ++j)
+  {
+    if(s_tree.valid(iterable_list[j]))
+    {
+      s_tree.lookupPointer(iterable_list[j])->reassignAdvisor(i);
+    }
+    else
+    {
+      cout << "WARNING: Student " << iterable_list[j] << " is not in the database. " << endl;
+    }
+  }
 }
 
 void Menu::deleteStudent()
@@ -235,7 +270,15 @@ void Menu::deleteFaculty()
     {
       if(s_tree.valid(iterable_list[i]))
       {
-        reassignAdvisorBase(iterable_list[i], f_tree.getRootID());
+        if(f_tree.empty())
+        {
+          cout << "The faculty tree is empty. Defaulting to an advisor id of -1." << endl;
+          reassignAdvisorBase(iterable_list[i], f_tree.getNextID());
+        }
+        else
+        {
+          reassignAdvisorBase(iterable_list[i], f_tree.getRootID());
+        }
       }
     }
   }
@@ -258,6 +301,7 @@ void Menu::reassignAdvisor()
     else
     {
       store();
+      removeAdviseeBase(s_tree.lookupPointer(id1)->getAdvisor(), id1);
       reassignAdvisorBase(id1, id2);
     }
   }
@@ -281,6 +325,14 @@ void Menu::removeAdvisee()
     {
       store();
       removeAdviseeBase(id1, id2);
+      if(id1 != f_tree.getRootID())
+        reassignAdvisorBase(id2, f_tree.getRootID());
+      else
+      {
+        if(f_tree.empty())
+          cout << "The faculty tree is empty. Defaulting to an advisor id of -1." << endl;
+        reassignAdvisorBase(id2, f_tree.getNextID());
+      }
     }
   }
 }
@@ -311,10 +363,11 @@ void Menu::addAdvisee()
 
 void Menu::reassignAdvisorBase(int student_id, int faculty_id)
 {
-  if(s_tree.valid(student_id) && f_tree.valid(faculty_id))
+  if(s_tree.valid(student_id))
   {
     s_tree.lookupPointer(student_id)->reassignAdvisor(faculty_id);
-    f_tree.lookupPointer(faculty_id)->addAdvisee(student_id);
+    if(f_tree.valid(faculty_id))
+      f_tree.lookupPointer(faculty_id)->addAdvisee(student_id);
   }
 }
 

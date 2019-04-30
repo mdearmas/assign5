@@ -80,7 +80,7 @@ void MasterFacultyTree::deserialize(ifstream& f)
   }
 }
 
-void MasterFacultyTree::addFaculty()
+int MasterFacultyTree::addFaculty()
 {
   int i, a, s;
   string n, l, d;
@@ -128,6 +128,7 @@ void MasterFacultyTree::addFaculty()
     }
     tree->insertBST(i, new_faculty);
     cout << "Faculty added successfully. Press [ENTER] to continue.";
+    return i;
   }
   catch(BadInputException& e)
   {
